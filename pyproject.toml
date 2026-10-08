@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "minidb-engine"
+version = "0.1.0"
+description = "An educational Python database engine with atomic JSON storage"
+requires-python = ">=3.10"
+
+[project.scripts]
+minidb = "minidb.__main__:main"
+minidb-gui = "minidb.gui:main"
+minidb-server = "minidb.server:main"
+
+[tool.setuptools.packages.find]
+include = ["minidb*"]
+
+[tool.setuptools.package-data]
+minidb = ["web/*.html", "web/*.css", "web/*.js"]

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="minidb-token" content="__API_TOKEN__">
+<title>MiniDB · Database workspace</title>
+<link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head>
+<body>
+<header><div class="brand"><span class="logo">M</span><div><h1>MiniDB</h1><p>Database workspace</p></div></div><span id="mode" class="badge">Connecting…</span></header>
+<main>
+<aside><div class="section-head"><h2>Tables</h2><button id="refresh" class="small">Refresh</button></div><div id="tables"></div><h2 class="schema-heading">Schema</h2><div id="schema" class="muted">Select a table to inspect its columns.</div></aside>
+<section class="workspace">
+<div class="intro"><h2>Your data, one query away.</h2><p id="database" class="muted">Connecting to database…</p></div>
+<section class="panel"><div class="section-head"><h3>SQL editor</h3><span class="muted shortcut">⌘ / Ctrl + Enter</span></div><label class="sr-only" for="sql">SQL statement</label><textarea id="sql" spellcheck="false">CREATE TABLE people (id INTEGER PRIMARY KEY, name TEXT NOT NULL, age INTEGER);</textarea><p class="hint">Run one statement at a time, or select a statement in the editor.</p><div class="actions"><button id="run" class="primary">Run SQL</button><div class="transactions"><button id="begin">Begin</button><button id="commit" disabled>Commit</button><button id="rollback" disabled>Rollback</button></div></div></section>
+<div id="status" role="status" aria-live="polite">Ready.</div>
+<section class="panel results-panel"><div class="section-head"><h3>Results <span id="count" class="muted"></span></h3><button id="export" disabled>Export CSV</button></div><div id="results" class="results"><div class="empty">Run a query to explore your data.</div></div></section>
+<details><summary>SQL examples</summary><pre>INSERT INTO people VALUES (1, 'Ada', 36);
+SELECT * FROM people ORDER BY age DESC;
+UPDATE people SET age = 37 WHERE id = 1;
+DELETE FROM people WHERE id = 1;</pre><p>Browse buttons show up to 1,000 rows. Transaction ownership expires after 5 minutes of inactivity.</p></details>
+</section></main><footer>MiniDB · Local database engine · <span id="footer-mode">Autocommit saves each write</span></footer>
+</body></html>
